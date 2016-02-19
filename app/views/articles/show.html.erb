@@ -1,0 +1,11 @@
+<h1><%= @article.title %></h1><br>
+<h3><%= @article.body %></h3>
+
+<%= comments_tree_for @comments %>
+
+<!-- FORM FOR NEW COMMENT -->
+<%= form_for ([@article, @article.comments.build]) do |f| %>
+	<%= f.text_field :title %>
+	<%= f.text_area :body %>
+	<%= f.submit %>
+<% end %>

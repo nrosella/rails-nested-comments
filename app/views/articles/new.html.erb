@@ -1,0 +1,7 @@
+<%= form_for @article do |f| %>
+	<%= f.hidden_field :user_id, value: current_user.id %>
+	<%= f.text_field :title %>
+	<%= f.text_field :body %>
+	<%= f.submit %>
+<% end %>
+

@@ -1,0 +1,15 @@
+
+<% if comment.article_id == @show %>
+  <div class="well">
+    <h2><%= comment.title %></h2>
+    <p class="text-muted">Added by <strong><%= comment.author %></strong> on
+      <%= l(comment.created_at, format: '%B, %d %Y %H:%M:%S') %></p>
+    <blockquote>
+      <p><%= comment.body %></p>
+    </blockquote>
+  	  <% if comment.show_replies_text %>
+        <small class="text-muted">There are no replies yet - be the first one to reply!</small>
+      <% end %>
+    	<p><%= link_to 'reply', new_comment_path(parent_id: comment.id, article_id: @article.id)  %></p>
+  </div>
+<% end %>

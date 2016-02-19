@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
   devise_for :users
+
+  resources :comments, only: [:index, :create]
+  get '/comments/new/(:parent_id, :article_id)', to: 'comments#new', as: :new_comment
+
+  resources :articles do
+    resources :comments
+    #get '/comments/new/(:parent_id)', to: 'comments#new', as: :new_comment
+  end
+
+  root 'articles#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
